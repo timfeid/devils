@@ -33,7 +33,6 @@ public class PlayerActivity extends AppCompatActivity implements Listener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
-        Config.setContext(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         int personId = getIntent().getIntExtra("personId", 0);

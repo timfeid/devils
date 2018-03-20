@@ -16,6 +16,7 @@ public class HomeActivity extends HamburgerActivity implements Listener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Config.init(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 

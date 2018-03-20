@@ -19,7 +19,6 @@ public class HamburgerActivity extends AppCompatActivity {
     @Override
     public void setContentView(@LayoutRes int layoutResId) {
         super.setContentView(layoutResId);
-        Config.setContext(this);
         onCreateDrawer();
     }
 

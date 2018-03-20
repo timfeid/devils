@@ -24,8 +24,6 @@ public class StandingsActivity extends HamburgerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_standings);
-        Config.setContext(this);
-
         getSupportActionBar().setTitle("Standings");
 
         final StandingsPageAdapter adapter = new StandingsPageAdapter(getSupportFragmentManager());

@@ -22,7 +22,8 @@ public class PlayerStats extends Observable implements Listener {
 
     public PlayerStats() {
         ApiRequest request = new ApiRequest("teams/1");
-        request.addParam("hydrate", "franchise(roster(season=20172018,person(name,stats(splits=[yearByYear]))))");
+        String season = Config.getValue("season");
+        request.addParam("hydrate", "franchise(roster(season="+season+",person(name,stats(splits=[yearByYear]))))");
         request.addListener(this);
 
         Thread thread = new Thread(request);

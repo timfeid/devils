@@ -47,12 +47,14 @@ class UpcomingGameLayout extends GameLayout {
             TextView scorer = layout.findViewById(R.id.top_scorer_name);
             TextView goals = layout.findViewById(R.id.top_scorer_goals);
             TextView assists = layout.findViewById(R.id.top_scorer_assists);
+            TextView info = layout.findViewById(R.id.top_scorer_info);
 
             scorer.setText(person.getShortName());
             Person.Stats currentStats = person.getCurrentStats();
             goals.setText(MessageFormat.format("{0}G", currentStats == null ? 0 : currentStats.goals()));
             assists.setText(MessageFormat.format("{0}A", currentStats == null ? 0 : currentStats.assists()));
             imageCircleUrl(photo, getImageFor(person.getId()));
+            info.setText(MessageFormat.format("#{0}, {1}", person.getNumber(), person.getPositionAbbreviation()));
 
             topScorersLayout.addView(layout);
         }

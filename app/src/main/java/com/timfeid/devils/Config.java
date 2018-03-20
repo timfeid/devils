@@ -13,24 +13,26 @@ import java.util.Properties;
  * Get values from config file
  */
 
-class Config {
+public class Config {
     private static final String TAG = "Config";
 
-    static String getValue(String name) {
-        Resources resources = Resources.getSystem();
+    private static Properties properties = new Properties();
+
+    public static void init(Context context) {
+        Resources resources = context.getResources();
 
         try {
             InputStream rawResource = resources.openRawResource(R.raw.config);
-            Properties properties = new Properties();
             properties.load(rawResource);
-            return properties.getProperty(name);
         } catch (Resources.NotFoundException e) {
             Log.e(TAG, "Unable to find the config file: " + e.getMessage());
         } catch (IOException e) {
             Log.e(TAG, "Failed to open config file.");
         }
+    }
 
-        return null;
+    public static String getValue(String name) {
+        return properties.getProperty(name);
     }
 
 }
