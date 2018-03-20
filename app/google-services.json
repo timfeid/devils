@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "966643282403",
+    "firebase_url": "https://njdevils-5e714.firebaseio.com",
+    "project_id": "njdevils-5e714",
+    "storage_bucket": "njdevils-5e714.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966643282403:android:be60dec84abf4f02",
+        "android_client_info": {
+          "package_name": "com.timfeid.devils"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966643282403-fjdf47qlcaon6bva2harielu846ri2pr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxBDLqlLfMhAdClZdDMYkQd2vjfY8VaU0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

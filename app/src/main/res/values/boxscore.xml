@@ -1,0 +1,10 @@
+<resources>
+    <string name="shots">Shots</string>
+    <string name="pim">PIM</string>
+    <string name="pp_ops">Power Play</string>
+    <string name="hits">Hits</string>
+    <string name="blocks">Blocks</string>
+    <string name="faceoff_p">Faceoff %</string>
+    <string name="giveaways">Giveaways</string>
+    <string name="takeaways">Takeaways</string>
+</resources>

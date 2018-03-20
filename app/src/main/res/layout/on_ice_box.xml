@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="UseCompoundDrawables">
+    <ImageView
+        android:id="@+id/on_ice_photo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/team_1_20172018_dark"
+        android:contentDescription="@string/player" />
+    <TextView
+        android:id="@+id/on_ice_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/transparentIsh"
+        android:textAlignment="center"/>
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_marginTop="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/scoring_summary_photo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_launcher" />
+    <ImageButton
+        android:layout_gravity="center"
+        android:layout_marginStart="3dp"
+        android:id="@+id/view_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_play_circle_outline_white_24dp"
+        android:background="#00000000"
+        android:contentDescription="TODO" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/scoring_summary_scorer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/colorAccent"/>
+            <TextView
+                android:id="@+id/scoring_summary_strength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/transparentIsh"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/scoring_summary_assists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/transparentIsh" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="end">
+        <TextView
+            android:id="@+id/scoring_summary_score"
+            android:layout_width="wrap_content"
+            android:includeFontPadding="false"
+            android:textAllCaps="true"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/transparentIsh"/>
+        <TextView
+            android:id="@+id/scoring_summary_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textAllCaps="true"
+            android:textSize="12sp"
+            android:textColor="@color/transparentIsh"/>
+        <TextView
+            android:id="@+id/scoring_summary_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textAllCaps="true"
+            android:textSize="12sp"
+            android:textColor="@color/transparentIsh"/>
+    </LinearLayout>
+</LinearLayout>

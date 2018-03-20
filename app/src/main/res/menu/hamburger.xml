@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_home"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home_black_24px" />
+    <item android:id="@+id/nav_media"
+        android:title="@string/media"
+        android:icon="@drawable/ic_tv" />
+    <item android:id="@+id/nav_schedule"
+        android:title="@string/schedule"
+        android:icon="@drawable/ic_calendar" />
+    <item android:id="@+id/nav_standings"
+        android:title="@string/standings"
+        android:icon="@mipmap/ic_format_list_numbered_black_24dp" />
+    <item android:id="@+id/nav_player_stats"
+        android:title="@string/player_stats"
+        android:icon="@mipmap/ic_show_chart_black_24dp"/>
+</menu>
