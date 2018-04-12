@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#8c0000</color>
+    <color name="colorPrimaryDark">#6c0000</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorPrimaryLight">#ffe6e8</color>
+    <color name="colorPrimaryLightest">#ffebeb</color>
+    <color name="transparentIsh">#AAFFFFFF</color>
+    <color name="transparentMax">#85FFFFFF</color>
+    <color name="transparentBlackIsh">#30000000</color>
+    <color name="transparentBlack">#75000000</color>
+    <color name="lightGrey">#eaeaea</color>
+    <color name="diffPositive">#003300</color>
+    <color name="diffNegative">#6c0000</color>
+    <color name="black">#000</color>
+</resources>

@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">New Jersey Devils</string>
+    <string name="vs">VS</string>
+    <string name="title_activity_player_stats">PlayerStatsActivity</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="loading">Loading...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="period_1_name">1ST</string>
+    <string name="period_2_name">2ND</string>
+    <string name="period_3_name">3RD</string>
+    <string name="final_score_name">Total</string>
+    <string name="shots_on_goal">SOG</string>
+    <string name="score_summary_header">Score Summary</string>
+    <string name="three_stars_header">3 Stars</string>
+    <string name="boxscore_header">Boxscore</string>
+    <string name="linescore_header">Linescore</string>
+    <string name="top_scorers">Top Scorers</string>
+    <string name="season">20172018</string>
+    <string name="period_4_name">OT</string>
+    <string name="players_on_ice_header">Players on Ice</string>
+    <string name="period_so_name">SO</string>
+    <string name="title_activity_view_highlight">ViewHighlight</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="final_shootout">Final/SO</string>
+    <string name="final_overtime">Final/OT</string>
+    <string name="final_regulation">Final</string>
+    <string name="player_stats_points_header">Point Leaders</string>
+    <string name="header_points">Points</string>
+    <string name="button_view_more">View More</string>
+    <string name="goals_header">Goals</string>
+    <string name="assists_header">Assists</string>
+    <string name="conference">Conference</string>
+    <string name="league">League</string>
+    <string name="home">Home</string>
+    <string name="media">Media</string>
+    <string name="schedule">Schedule</string>
+    <string name="standings">Standings</string>
+    <string name="player_stats">Player Stats</string>
+    <string name="media_image">Media Image</string>
+    <string name="view">View</string>
+    <string name="player">Player</string>
+    <string name="division">division</string>
+    <string name="gp">GP</string>
+    <string name="w">W</string>
+    <string name="l">L</string>
+    <string name="ot">OT</string>
+    <string name="pts">PTS</string>
+    <string name="row">ROW</string>
+    <string name="diff">DIFF</string>
+    <string name="strk">STRK</string>
+    <string name="dash">-</string>
+</resources>
