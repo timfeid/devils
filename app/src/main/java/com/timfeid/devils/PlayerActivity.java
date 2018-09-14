@@ -121,6 +121,7 @@ public class PlayerActivity extends AppCompatActivity implements Listener {
 
         @JavascriptInterface
         public int load() {
+            Helpers.d("LOADING PLAYER ID");
             return getIntent().getIntExtra("personId", 0);
         }
 

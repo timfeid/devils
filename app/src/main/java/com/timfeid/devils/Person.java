@@ -20,8 +20,8 @@ import java.util.Date;
 class Person implements Parcelable {
     private JSONObject data;
     private JSONObject person;
-    private Stats currentStats;
-    private Stats careerStats;
+    private Stats currentStats = null;
+    private Stats careerStats = null;
     Person(JSONObject data) {
         this.data = data;
         setPerson();
@@ -80,13 +80,17 @@ class Person implements Parcelable {
                 for (int i = 0; i < stats.length(); i++) {
                     JSONObject stat = stats.getJSONObject(i);
                     String displayName = stat.getJSONObject("type").getString("displayName");
-                    if (displayName.equals("yearByYear") || displayName.equals("statsSingleSeason")) {
+                    if (displayName.equals("yearByYear") || displayName.equals("statsSingleSeason") || displayName.equals("statsSingleSeasonPlayoffs")) {
                         JSONArray splits = stat.getJSONArray("splits");
                         for (int j = 0; j < splits.length(); j++) {
                             JSONObject split = splits.getJSONObject(j);
-                            if (split.getString("season").equals(Config.getValue("season"))) {
+                            if (split.getJSONObject("league").getString("name") == "NHL") {
                                 currentStats = new Stats(split.getJSONObject("stat"));
-                                return;
+                                if (split.getString("season").equals(Config.getValue("season"))) {
+                                    currentStats = new Stats(split.getJSONObject("stat"));
+                                    return;
+                                }
+
                             }
                         }
                     }
@@ -95,6 +99,11 @@ class Person implements Parcelable {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        if (currentStats == null) {
+            currentStats = new Stats(new JSONObject());
+        }
+
     }
 
     private void setCareerStats() {
@@ -146,11 +155,11 @@ class Person implements Parcelable {
     }
 
     public String getNumber() throws JSONException {
-        return person.getString("primaryNumber");
+        return person.optString("primaryNumber");
     }
 
     public String getPositionCode() throws JSONException {
-        return person.getJSONObject("primaryPosition").getString("code");
+        return person.getJSONObject("primaryPosition").optString("code");
     }
 
     public String getImageUrl() throws JSONException {
@@ -249,13 +258,7 @@ class Person implements Parcelable {
         }
 
         public int points() {
-            try {
-                return stats.getInt("points");
-            } catch (JSONException e) {
-                // Probably a goalie
-            }
-
-            return 0;
+            return stats.optInt("points");
         }
 
         public int assists() {

@@ -119,10 +119,11 @@ public class PlayerStatsActivity extends HamburgerActivity {
                 holder.mView.setDividerPadding(5);
                 holder.mView.setPadding(20,20,20,20);
                 Person person = roster.get(position);
+                Integer points = person.getCurrentStats() != null ? person.getCurrentStats().points() : 0;
                 holder.number.setText(String.format(Locale.US, "%d", position+1));
                 holder.player.setText(person.getFullName());
                 holder.numberAndPos.setText(String.format(Locale.US, "#%s | %s", person.getNumber(), person.getPositionAbbreviation()));
-                holder.total.setText(String.format(Locale.US, "%d", person.getCurrentStats().points()));
+                holder.total.setText(String.format(Locale.US, "%d", points));
                 Picasso.get().load(person.getImageUrl()).transform(circle).into(holder.photo);
 
             } catch (JSONException e) {

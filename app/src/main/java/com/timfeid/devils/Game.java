@@ -32,6 +32,7 @@ public class Game implements GameInterface {
     public static final String EVENT_TYPE_GOAL = "GOAL";
     public static final String EVENT_TYPE_END_PERIOD = "PERIOD_END";
     public static final String EVENT_PERIOD_READY = "PERIOD_READY";
+    public static final String GAME_TYPE_PLAYOFF = "P";
     JSONObject game;
     private GameContent gameContent;
     private List<Play> plays;
@@ -93,8 +94,11 @@ public class Game implements GameInterface {
         recordText.append(record.getString("wins"));
         recordText.append("-");
         recordText.append(record.getString("losses"));
-        recordText.append("-");
-        recordText.append(record.getString("ot"));
+
+        if (record.has("ot")) {
+            recordText.append("-");
+            recordText.append(record.getString("ot"));
+        }
 
         return recordText.toString();
     }
@@ -111,8 +115,8 @@ public class Game implements GameInterface {
         Integer points = 0;
         JSONObject record = getTeam(team)
                 .getJSONObject("leagueRecord");
-        points += record.getInt("wins") * 2;
-        points += record.getInt("ot");
+        points += record.optInt("wins") * 2;
+        points += record.optInt("ot");
 
         return points;
     }
@@ -125,7 +129,17 @@ public class Game implements GameInterface {
         return getTeamPoints("away");
     }
 
+    public SpannableStringBuilder getPlayoffSeriesFormattedRecord(String team) throws JSONException {
+        String record = "Series "+getRecord(team);
+        SpannableStringBuilder str = new SpannableStringBuilder(record);
+
+        return str;
+    }
+
     public SpannableStringBuilder getFormattedRecord(String team) throws JSONException {
+        if (game.getString("gameType").equals(GAME_TYPE_PLAYOFF)) {
+            return getPlayoffSeriesFormattedRecord(team);
+        }
         String record = getRecord(team) + ", ";
         String points = getTeamPoints(team).toString() + "pts";
         String recordWithPoints = record + points;
@@ -200,10 +214,14 @@ public class Game implements GameInterface {
     }
 
     public String getBroadcastInfo(String team, String type) throws JSONException {
+        if (!game.has(type)) {
+            return "TBD";
+        }
+
         JSONArray broadcasts = game.getJSONArray(type);
         for (int i = 0; i < broadcasts.length(); i++) {
             JSONObject broadcast = broadcasts.getJSONObject(i);
-            if (broadcast.getString("type").equals(team)) {
+            if (broadcast.getString("type").equals(team) || broadcast.getString("type").equals("national")) {
                 return broadcast.getString("name");
             }
         }

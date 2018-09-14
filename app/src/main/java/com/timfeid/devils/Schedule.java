@@ -1,5 +1,7 @@
 package com.timfeid.devils;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,6 +27,7 @@ public class Schedule extends Observable implements Listener {
     }
 
     public void build() {
+        String season = Config.getValue("season");
         Calendar startDate = Calendar.getInstance();
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.DATE, DAYS_FROM_TODAY);
@@ -33,7 +36,7 @@ public class Schedule extends Observable implements Listener {
         ApiRequest request = new ApiRequest("schedule");
         request.addParam("startDate", DATE_FORMAT.format(startDate.getTime()));
         request.addParam("endDate", DATE_FORMAT.format(endDate.getTime()));
-        request.addParam("hydrate", "team(leaders,roster(season=20172018,person(name,stats(splits=[statsSingleSeason])))),linescore,broadcasts(all),tickets,game(content(media(epg),highlights(scoreboard)),seriesSummary),radioBroadcasts,metadata,decisions,scoringplays,seriesSummary(series)");
+        request.addParam("hydrate", String.format("team(leaders,roster(season=%s,person(name,stats(splits=[statsSingleSeason,statsSingleSeasonPlayoffs])))),linescore,broadcasts(all),tickets,game(content(media(epg),highlights(scoreboard)),seriesSummary),radioBroadcasts,metadata,decisions,scoringplays,seriesSummary(series)", season));
         request.addParam("teamId", "1");
         request.addListener(this);
 

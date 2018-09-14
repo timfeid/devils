@@ -35,7 +35,7 @@ public class Standings extends Observable implements Listener {
     private void startWildcardThread() {
         ApiRequest request = new ApiRequest(WILDCARD_ENDPOINT);
         request.addParam("expand", "standings.record,standings.team,standings.division,standings.conference,team.schedule.next,team.schedule.previous");
-        request.addParam("season", "20172018");
+        request.addParam("season", Config.getValue("season"));
         request.addListener(this);
 
         Thread thread = new Thread(request);
@@ -45,7 +45,7 @@ public class Standings extends Observable implements Listener {
     private void startLeagueThread() {
         ApiRequest request = new ApiRequest(LEAGUE_ENDPOINT);
         request.addParam("expand", "standings.record,standings.team,standings.division,standings.conference,team.schedule.next,team.schedule.previous");
-        request.addParam("season", "20172018");
+        request.addParam("season", Config.getValue("season"));
         request.addListener(this);
 
         Thread thread = new Thread(request);

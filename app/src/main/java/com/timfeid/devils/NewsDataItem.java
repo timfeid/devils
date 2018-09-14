@@ -60,6 +60,16 @@ public class NewsDataItem implements MediaDataset.DataItem, Parcelable {
         return "";
     }
 
+    public String getPlaybackUrl() {
+        try {
+            return item.getJSONObject("media").getJSONArray("playbacks").getJSONObject(0).getString("url");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
     @Override
     public String getBlurb() {
         try {
