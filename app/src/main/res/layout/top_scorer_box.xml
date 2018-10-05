@@ -35,6 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="end|center"
+        android:layout_marginEnd="15dp"
         android:orientation="vertical">
         <TextView
             android:id="@+id/top_scorer_goals"

@@ -8,36 +8,37 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="180dp">
-        <TextView
+        android:paddingTop="160dp">
+        <com.timfeid.devils.FontTextView
             android:id="@+id/gameDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
             android:text="Sep 03"
             android:textColor="#fff"
+            android:textSize="18dp"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:fontFamily="sans-serif-light" />
 
-        <TextView
+        <com.timfeid.devils.BoldFontTextView
             android:id="@+id/gameTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
-            android:paddingTop="13dp"
+            android:paddingTop="17dp"
             android:text="7:00 PM"
             android:textColor="#fff"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <View
             android:layout_width="2dp"
             android:layout_height="90dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="58dp"
             android:background="@color/transparentMax" />
     </RelativeLayout>
 
@@ -70,43 +71,42 @@
                     tools:layout_height="70dp"
                     android:tag="HOME_TEAM_LOGO"/>
 
-                <TextView
+                <com.timfeid.devils.FontTextView
                     android:id="@+id/homeTeamRecord"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:fontFamily="sans-serif-light"
                     android:text="26-16-8, 60pts"
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
                     android:textAllCaps="true"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
-                <TextView
+                <com.timfeid.devils.FontTextView
                     android:id="@+id/homeTeamCity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
+                    android:layout_marginTop="-8sp"
                     android:layout_gravity="start"
                     android:text="Home City"
-                    fontPath="fonts/Oswald-Regular.ttf"
                     android:textAlignment="viewStart"
                     android:textAllCaps="true"
-                    android:textSize="18sp"
+                    android:textSize="24sp"
                     android:textColor="#fff" />
 
-                <TextView
+                <com.timfeid.devils.BoldFontTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
-                    android:layout_marginTop="-5dp"
+                    android:layout_marginTop="-13dp"
                     android:layout_gravity="start"
                     android:textColor="#fff"
                     android:text="Home Team"
                     fontPath="fonts/Oswald-Bold.ttf"
                     android:textAlignment="viewStart"
                     android:textAllCaps="true"
-                    android:textSize="24sp"
+                    android:textSize="28sp"
                     android:tag="HOME_TEAM_NAME" />
 
                 <View
@@ -115,15 +115,7 @@
                     android:background="@color/transparentMax"
                     android:layout_marginTop="5dp"/>
 
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Get Tickets"
-                    android:background="#00000000"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    android:drawableLeft="@android:drawable/ic_btn_speak_now" />
+
 
             </LinearLayout>
 
@@ -144,7 +136,7 @@
                     tools:layout_height="70dp"
                     android:tag="AWAY_TEAM_LOGO" />
 
-                <TextView
+                <com.timfeid.devils.FontTextView
                     android:id="@+id/awayTeamRecord"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -154,12 +146,13 @@
                     android:text="26-16-8, 60pts"
                     android:textAlignment="viewEnd"
                     android:textAllCaps="true"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
-                <TextView
+                <com.timfeid.devils.FontTextView
                     android:id="@+id/awayTeamCity"
                     android:layout_width="match_parent"
-                    android:layout_height="13dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-8sp"
                     android:includeFontPadding="false"
                     android:layout_gravity="end"
                     android:textColor="#fff"
@@ -167,18 +160,20 @@
                     android:textAlignment="viewEnd"
                     android:textAllCaps="true"
                     android:fontFamily="sans-serif-light"
-                    android:tag="AWAY_TEAM_CITY" />
+                    android:tag="AWAY_TEAM_CITY"
+                    android:textSize="24sp"/>
 
-                <TextView
+                <com.timfeid.devils.BoldFontTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
                     android:layout_gravity="end"
                     android:text="Away Team"
+                    android:layout_marginTop="-13sp"
                     android:textColor="#fff"
                     android:textAlignment="viewEnd"
                     android:textAllCaps="true"
-                    android:textSize="18sp"
+                    android:textSize="28sp"
                     android:textStyle="bold"
                     android:tag="AWAY_TEAM_NAME" />
 
@@ -214,10 +209,11 @@
             android:layout_marginTop="20dp"
             android:background="#75000000"
             android:orientation="vertical">
-            <TextView
+            <com.timfeid.devils.BoldFontTextView
                 android:text="@string/top_scorers"
                 android:textColor="@color/transparentMax"
                 android:textAllCaps="true"
+                android:textSize="18dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content" />
             <LinearLayout

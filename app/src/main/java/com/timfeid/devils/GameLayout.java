@@ -84,7 +84,7 @@ abstract class GameLayout {
         homeTeamRecord.setText(game.getFormattedRecord("home"));
 
 
-        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.US);
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a", Locale.US);
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d", Locale.US);
 
         gameDate.setText(dateFormat.format(game.getDate()));
