@@ -189,7 +189,8 @@ class PreviousGameLayout extends GameLayout {
             TextView strength = layout.findViewById(R.id.scoring_summary_strength);
             final ImageButton viewVideo = layout.findViewById(R.id.view_video);
             Play.ScoringPlayer scorerObj = play.getScorer();
-            String scorerText = scorerObj.getPerson().getFullName() + " (" + scorerObj.getSeasonTotal() + ")";
+            Person person = scorerObj.getPerson();
+            String scorerText = (person != null ? person.getFullName() : "Unknown") + " (" + scorerObj.getSeasonTotal() + ")";
             String strengthText = play.getStrength();
 
             final GameContent content = game.getGameContent();
@@ -203,7 +204,10 @@ class PreviousGameLayout extends GameLayout {
             }
 
             scorer.setText(scorerText);
-            imageCircleUrl(photo, getImageFor(scorerObj.getPerson().getId()));
+
+            if (scorerObj.getPerson() != null) {
+                imageCircleUrl(photo, getImageFor(scorerObj.getPerson().getId()));
+            }
 
             assists.setText(play.getAssists());
             score.setText(play.getScore());

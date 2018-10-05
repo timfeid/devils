@@ -58,7 +58,11 @@ public class Play {
     public String getAssists() throws JSONException {
         StringBuilder assists = new StringBuilder();
         for (ScoringPlayer player : getAssisters()) {
-            assists.append(player.getPerson().getShortName());
+            if (player.getPerson() != null) {
+                assists.append(player.getPerson().getShortName());
+            } else {
+                assists.append("Unknown");
+            }
             assists.append(" (");
             assists.append(player.getSeasonTotal());
             assists.append("), ");

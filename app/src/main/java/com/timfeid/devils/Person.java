@@ -84,14 +84,17 @@ class Person implements Parcelable {
                         JSONArray splits = stat.getJSONArray("splits");
                         for (int j = 0; j < splits.length(); j++) {
                             JSONObject split = splits.getJSONObject(j);
-                            if (split.getJSONObject("league").getString("name") == "NHL") {
-                                currentStats = new Stats(split.getJSONObject("stat"));
-                                if (split.getString("season").equals(Config.getValue("season"))) {
+                            if (split.has("league")) {
+                                if (split.getJSONObject("league").getString("name") == "NHL") {
                                     currentStats = new Stats(split.getJSONObject("stat"));
-                                    return;
-                                }
+                                    if (split.getString("season").equals(Config.getValue("season"))) {
+                                        currentStats = new Stats(split.getJSONObject("stat"));
+                                        return;
+                                    }
 
+                                }
                             }
+
                         }
                     }
                 }

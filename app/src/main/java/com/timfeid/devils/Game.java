@@ -24,7 +24,7 @@ public class Game implements GameInterface {
     public static final String PLAYER_TYPE_SCORER = "Scorer";
     public static final String PLAYER_TYPE_ASSIST = "Assist";
     public static final String STRENGTH_EVEN = "EVEN";
-    public static final String CODE_FINAL = "7";
+    public static final String CODE_FINAL = "6";
     public static final String CODE_PREGAME = "2";
     public static final String CODE_SCHEDULED = "1";
     public static final String TEAM_NAME = "teamName";

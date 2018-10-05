@@ -64,6 +64,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="70dp"
                     android:layout_gravity="start"
+                    android:layout_marginLeft="-15dp"
                     android:scaleType="fitStart"
                     app:srcCompat="@drawable/team_1_20172018_dark"
                     tools:layout_height="70dp"
@@ -79,31 +80,33 @@
                     android:textAlignment="viewStart"
                     android:textColor="#fff"
                     android:textAllCaps="true"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/homeTeamCity"
                     android:layout_width="match_parent"
-                    android:layout_height="13dp"
+                    android:layout_height="wrap_content"
                     android:includeFontPadding="false"
                     android:layout_gravity="start"
                     android:text="Home City"
+                    fontPath="fonts/Oswald-Regular.ttf"
                     android:textAlignment="viewStart"
                     android:textAllCaps="true"
-                    android:textColor="#fff"
-                    android:fontFamily="sans-serif-light" />
+                    android:textSize="18sp"
+                    android:textColor="#fff" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
+                    android:layout_marginTop="-5dp"
                     android:layout_gravity="start"
                     android:textColor="#fff"
                     android:text="Home Team"
+                    fontPath="fonts/Oswald-Bold.ttf"
                     android:textAlignment="viewStart"
                     android:textAllCaps="true"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:textSize="24sp"
                     android:tag="HOME_TEAM_NAME" />
 
                 <View
@@ -125,82 +128,83 @@
             </LinearLayout>
 
             <LinearLayout
-                    android:layout_width="0dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingHorizontal="15dp">
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="70dp"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="-15dp"
+                    android:scaleType="fitEnd"
+                    app:srcCompat="@drawable/team_1_20172018_dark"
+                    android:textColor="#fff"
+                    tools:layout_height="70dp"
+                    android:tag="AWAY_TEAM_LOGO" />
+
+                <TextView
+                    android:id="@+id/awayTeamRecord"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="15dp">
-                    <ImageView
-                        android:layout_width="fill_parent"
-                        android:layout_height="70dp"
-                        android:layout_gravity="end"
-                        android:scaleType="fitEnd"
-                        app:srcCompat="@drawable/team_1_20172018_dark"
-                        android:textColor="#fff"
-                        tools:layout_height="70dp"
-                        android:tag="AWAY_TEAM_LOGO" />
+                    android:layout_gravity="end"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="26-16-8, 60pts"
+                    android:textAlignment="viewEnd"
+                    android:textAllCaps="true"
+                    android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/awayTeamRecord"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:textColor="#fff"
-                        android:fontFamily="sans-serif-light"
-                        android:text="26-16-8, 60pts"
-                        android:textAlignment="viewEnd"
-                        android:textAllCaps="true"
-                        android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/awayTeamCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="13dp"
+                    android:includeFontPadding="false"
+                    android:layout_gravity="end"
+                    android:textColor="#fff"
+                    android:text="Away City"
+                    android:textAlignment="viewEnd"
+                    android:textAllCaps="true"
+                    android:fontFamily="sans-serif-light"
+                    android:tag="AWAY_TEAM_CITY" />
 
-                    <TextView
-                        android:id="@+id/awayTeamCity"
-                        android:layout_width="match_parent"
-                        android:layout_height="13dp"
-                        android:includeFontPadding="false"
-                        android:layout_gravity="end"
-                        android:textColor="#fff"
-                        android:text="Away City"
-                        android:textAlignment="viewEnd"
-                        android:textAllCaps="true"
-                        android:fontFamily="sans-serif-light"
-                        android:tag="AWAY_TEAM_CITY" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:layout_gravity="end"
+                    android:text="Away Team"
+                    android:textColor="#fff"
+                    android:textAlignment="viewEnd"
+                    android:textAllCaps="true"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:tag="AWAY_TEAM_NAME" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:includeFontPadding="false"
-                        android:layout_gravity="end"
-                        android:text="Away Team"
-                        android:textColor="#fff"
-                        android:textAlignment="viewEnd"
-                        android:textAllCaps="true"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:tag="AWAY_TEAM_NAME" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/transparentMax"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
 
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="2dp"
-                        android:background="@color/transparentMax"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"/>
-
-                    <TextView
-                        android:id="@+id/broadcastInfo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:includeFontPadding="false"
-                        android:layout_gravity="end"
-                        android:text="BROADCASTS"
-                        android:textColor="#fff"
-                        android:textAlignment="viewEnd"
-                        android:textAllCaps="true"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/broadcastInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:layout_gravity="end"
+                    android:text="BROADCASTS"
+                    android:textColor="#fff"
+                    android:textAlignment="viewEnd"
+                    android:textAllCaps="true"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
 
 
-                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
