@@ -11,7 +11,6 @@ public class FontTextView extends android.support.v7.widget.AppCompatTextView {
     }
     public FontTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Helpers.d(attrs.toString());
         setFont();
     }
     public FontTextView(Context context, AttributeSet attrs, int defStyle) {

@@ -70,9 +70,8 @@ class Roster {
             if (b.getCurrentStats() == null) {
                 return -1;
             }
-            return a.getCurrentStats().points() > b.getCurrentStats().points() ? -1
-                    : a.getCurrentStats().points() == b.getCurrentStats().points() ? 0
-                    : 1;
+
+            return Integer.compare(b.getCurrentStats().points(), a.getCurrentStats().points());
         }
     }
 
@@ -86,9 +85,7 @@ class Roster {
             if (b.getCurrentStats() == null) {
                 return -1;
             }
-            return a.getCurrentStats().goals() > b.getCurrentStats().goals() ? -1
-                    : a.getCurrentStats().goals() == b.getCurrentStats().goals() ? 0
-                    : 1;
+            return Integer.compare(b.getCurrentStats().goals(), a.getCurrentStats().goals());
         }
     }
 
@@ -102,9 +99,7 @@ class Roster {
             if (b.getCurrentStats() == null) {
                 return -1;
             }
-            return a.getCurrentStats().assists() > b.getCurrentStats().assists() ? -1
-                    : a.getCurrentStats().assists() == b.getCurrentStats().assists() ? 0
-                    : 1;
+            return Integer.compare(b.getCurrentStats().assists(), a.getCurrentStats().assists());
         }
     }
 }

@@ -11,7 +11,6 @@ public class BoldFontTextView extends android.support.v7.widget.AppCompatTextVie
     }
     public BoldFontTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Helpers.d(attrs.toString());
         setFont();
     }
     public BoldFontTextView(Context context, AttributeSet attrs, int defStyle) {

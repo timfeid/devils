@@ -25,7 +25,6 @@ public class NewsMediaAdapter extends MediaAdapter implements Listener {
 
     private void parse(String output) {
         try {
-            Helpers.d(output);
             JSONObject mDataset = new JSONObject(output);
             JSONArray items = mDataset.getJSONArray("docs");
             for (int i = 0; i < items.length(); i++) {

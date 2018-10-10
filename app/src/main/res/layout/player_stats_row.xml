@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView
-        android:id="@+id/number"
-        android:gravity="center"
-        android:layout_width="20dp"
-        android:layout_height="fill_parent"
-        android:text="1"
-        android:textStyle="bold"
-        android:textSize="16sp"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/player_photo"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@mipmap/ic_launcher"
-        android:background="@drawable/player_photo_bg"
-        android:paddingTop="6dp"/>
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp">
 
-    <LinearLayout
-        android:layout_marginStart="5dp"
-        android:gravity="start|center"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent">
-        <TextView
-            android:id="@+id/player"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Yo Dawg"
-            android:textStyle="bold"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/num_pos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="#9 LW"
-            android:textSize="12sp"/>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:contentDescription="@string/media_image" />
 
-    <TextView
-        android:id="@+id/total"
-        android:gravity="center|end"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="59"
-        android:textSize="18sp"
-        android:textStyle="bold"/>
+
+            <com.timfeid.devils.FontTextView
+                android:id="@+id/player_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:paddingTop="8dp"
+                android:paddingHorizontal="16dp"
+                android:layout_below="@+id/image"
+                android:textSize="18sp" />
+
+            <com.timfeid.devils.BoldFontTextView
+                android:id="@+id/player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-8dp"
+                android:layout_below="@+id/player_number"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="16dp"
+                android:textColor="#222"
+                android:textStyle="bold"
+                android:textSize="24sp" />
+
+            <com.timfeid.devils.BoldFontTextView
+                android:id="@+id/stat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="32sp"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>

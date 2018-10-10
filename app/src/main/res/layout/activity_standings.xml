@@ -25,7 +25,7 @@
             />
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/standings_page_viewer"
+            android:id="@+id/page_viewer"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
     </LinearLayout>

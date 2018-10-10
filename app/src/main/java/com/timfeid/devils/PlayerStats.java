@@ -32,8 +32,6 @@ public class PlayerStats extends Observable implements Listener {
 
     public void handle(Runnable runner) {
         ApiRequest request = (ApiRequest) runner;
-
-        Log.d("GETTING_URL", "DONE WITH API REQUEST IN NEXTGAME");
         parseObject(request.getOutput());
         notifyListeners();
         complete = true;
@@ -47,6 +45,7 @@ public class PlayerStats extends Observable implements Listener {
                     .getJSONObject("franchise")
                     .getJSONObject("roster")
                     .getJSONArray("roster");
+
             for (int i = 0; i < roster.length(); i++) {
                 players.add(new Player(roster.getJSONObject(i)));
             }

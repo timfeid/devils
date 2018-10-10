@@ -32,7 +32,6 @@ class Person implements Parcelable {
     private Person(Parcel in) {
         try {
             String data = in.readString();
-            Helpers.d(data);
             this.data = new JSONObject(data);
             setPerson();
             setCurrentStats();
@@ -84,9 +83,9 @@ class Person implements Parcelable {
                         JSONArray splits = stat.getJSONArray("splits");
                         for (int j = 0; j < splits.length(); j++) {
                             JSONObject split = splits.getJSONObject(j);
+
                             if (split.has("league")) {
-                                if (split.getJSONObject("league").getString("name") == "NHL") {
-                                    currentStats = new Stats(split.getJSONObject("stat"));
+                                if (split.getJSONObject("league").getString("name").equals(Stats.LEAGUE_NAME)) {
                                     if (split.getString("season").equals(Config.getValue("season"))) {
                                         currentStats = new Stats(split.getJSONObject("stat"));
                                         return;
@@ -255,6 +254,7 @@ class Person implements Parcelable {
     }
 
     class Stats {
+        public static final String LEAGUE_NAME = "National Hockey League";
         private JSONObject stats;
         public Stats(JSONObject stats) {
             this.stats = stats;

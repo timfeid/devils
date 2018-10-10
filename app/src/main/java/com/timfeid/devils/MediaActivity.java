@@ -25,7 +25,7 @@ public class MediaActivity extends HamburgerActivity {
         adapter.addFragment(new MediaVideoFragment(), "Videos");
 //        adapter.addFragment(new MediaFragment(), "Podcasts");
 
-        viewPager = findViewById(R.id.standings_page_viewer);
+        viewPager = findViewById(R.id.page_viewer);
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = findViewById(R.id.tabs);

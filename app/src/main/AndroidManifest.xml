@@ -16,7 +16,6 @@
         android:fullBackupContent="false"
         android:name=".DevilsApplication">
         <activity android:name=".ScheduleActivity" />
-        <activity android:name=".PlayerStatsActivity" />
         <activity android:name=".HamburgerActivity" />
 
         <service android:name=".FirebaseInstanceIdService">
@@ -44,6 +43,7 @@
             android:name=".PlayerActivity"
             android:parentActivityName=".PlayerStatsActivity" />
         <activity android:name=".StandingsActivity" />
+        <activity android:name=".PlayerStatsActivity" />
         <activity android:name=".MediaActivity" />
         <activity android:name=".NewsActivity" />
     </application>

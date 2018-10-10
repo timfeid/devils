@@ -144,7 +144,7 @@ public class GameFragment extends Fragment implements Listener {
     class LayoutFactory {
         public GameLayout createLayout() {
             try {
-                if (game.getCodedGameState().equals(Game.CODE_FINAL)) {
+                if (game.isFinal()) {
                     return new PreviousGameLayout(game, rootView, getActivity());
                 }
             } catch (JSONException e) {

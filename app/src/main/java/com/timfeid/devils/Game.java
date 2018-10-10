@@ -197,7 +197,7 @@ public class Game implements GameInterface {
 
     @Override
     public boolean isFinal() throws JSONException {
-        return getCodedGameState().equals(CODE_FINAL);
+        return Integer.valueOf(getCodedGameState()) >= Integer.valueOf(CODE_FINAL);
     }
 
     public String getAppTeamSide() throws JSONException {

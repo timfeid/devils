@@ -31,7 +31,7 @@ public class StandingsActivity extends HamburgerActivity {
         adapter.addFragment(new StandingsDivisionFragment(), "Division");
         adapter.addFragment(new StandingsLeagueFragment(), "League");
 
-        viewPager = findViewById(R.id.standings_page_viewer);
+        viewPager = findViewById(R.id.page_viewer);
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = findViewById(R.id.tabs);

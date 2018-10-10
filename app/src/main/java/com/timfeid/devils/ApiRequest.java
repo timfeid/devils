@@ -44,7 +44,6 @@ class ApiRequest extends ObservableThread {
             }
 
             try {
-
                 result.append(URLEncoder.encode((String) pair.first, "UTF-8"));
                 result.append("=");
                 result.append(URLEncoder.encode((String) pair.second, "UTF-8"));

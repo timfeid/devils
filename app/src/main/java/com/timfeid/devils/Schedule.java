@@ -71,7 +71,7 @@ public class Schedule extends Observable implements Listener {
                 Game game = games.get(i);
                 // Today's date (later today or already played) or game is live
                 if (dateFormat.format(game.getDate()).equals(currentDate)
-                        || !game.getCodedGameState().equals(Game.CODE_FINAL)) {
+                        || !game.isFinal()) {
                     return game;
                 }
             } catch (JSONException e) {

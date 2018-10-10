@@ -42,9 +42,8 @@ public class ScheduleActivity extends HamburgerActivity implements GameFragment.
 
         for (int i = 0; i < schedule.getGames().size(); i++) {
             try {
-                if (!schedule.getGame(i).getCodedGameState().equals("7")) {
+                if (!schedule.getGame(i).isFinal()) {
                     viewPager.setCurrentItem(i);
-                    final int index = i;
                     return;
                 }
             } catch (JSONException e) {
