@@ -2,16 +2,12 @@ package com.timfeid.devils;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,10 +15,8 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -31,12 +25,15 @@ import java.util.Locale;
 class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.ViewHolder> implements Listener {
     protected Activity activity;
     protected List<Person> roster;
-    private Comparator<Person> comparator;
 
-    PlayerStatsAdapter(Activity activity, Comparator<Person> comparator) {
+    private StatsGetter getter;
+    public Transformation circle;
+
+    PlayerStatsAdapter(Activity activity, StatsGetter getter) {
         this.activity = activity;
-        this.comparator = comparator;
+        this.getter = getter;
         Team.getInstance().withPlayerStats(this);
+        circle = new CircleTransform();
     }
 
     @NonNull
@@ -53,25 +50,13 @@ class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.ViewHol
     public void onBindViewHolder(@NonNull PlayerStatsAdapter.ViewHolder holder, int position) {
         Person person = roster.get(position);
         try {
-            Integer points = person.getCurrentStats() != null ? person.getCurrentStats().points() : 0;
             holder.playerName.setText(person.getFullName());
-            holder.playerStat.setText(String.format(Locale.US, "%d", points));
+            holder.playerStat.setText(getter.getStat(person));
             holder.playerNumber.setText(String.format(Locale.US, "#%s | %s", person.getNumber(), person.getPositionAbbreviation()));
             holder.card.setOnClickListener(new OnCardClicked(position));
-            Picasso.get().load(person.getActionPhotoUrl()).into(holder.image);
+            Picasso.get().load(person.getImageUrl()).transform(circle).into(holder.image);
         } catch (JSONException e) {
             e.printStackTrace();
-        }
-
-        if (position == 0) {
-            Resources r = activity.getApplicationContext().getResources();
-            int px = (int) TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    16,
-                    r.getDisplayMetrics()
-            );
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) holder.card.getLayoutParams();
-            params.setMargins(px, px, px, px / 2);
         }
 
     }
@@ -86,8 +71,8 @@ class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.ViewHol
     }
 
     public void handle(final PlayerStats playerStats) {
-        roster = playerStats.getRoster().getPlayers();
-        Collections.sort(roster, this.comparator);
+        roster = this.getter.getPlayers(playerStats.getRoster());
+        Collections.sort(roster, this.getter.getComparator());
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {

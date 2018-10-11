@@ -41,9 +41,9 @@
             </intent-filter></activity>
         <activity
             android:name=".PlayerActivity"
-            android:parentActivityName=".PlayerStatsActivity" />
+            android:parentActivityName=".StatsActivity" />
         <activity android:name=".StandingsActivity" />
-        <activity android:name=".PlayerStatsActivity" />
+        <activity android:name=".StatsActivity" />
         <activity android:name=".MediaActivity" />
         <activity android:name=".NewsActivity" />
     </application>

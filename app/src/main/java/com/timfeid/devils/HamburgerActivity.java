@@ -38,7 +38,7 @@ public class HamburgerActivity extends AppCompatActivity {
                         startActivity(home);
                         break;
                     case (R.id.nav_player_stats):
-                        Intent playerStats = new Intent(getApplicationContext(), PlayerStatsActivity.class);
+                        Intent playerStats = new Intent(getApplicationContext(), StatsActivity.class);
                         startActivity(playerStats);
                         break;
                     case (R.id.nav_media):

@@ -253,6 +253,10 @@ class Person implements Parcelable {
         return shoots;
     }
 
+    public boolean isGoalie() throws JSONException {
+        return getPositionCode().equals("G");
+    }
+
     class Stats {
         public static final String LEAGUE_NAME = "National Hockey League";
         private JSONObject stats;
@@ -261,47 +265,63 @@ class Person implements Parcelable {
         }
 
         public int points() {
-            return stats.optInt("points");
+            return stats.optInt("points", 0);
         }
 
         public int assists() {
-            try {
-                return stats.getInt("assists");
-            } catch (JSONException e) {
-                // Probably a goalie
-            }
-
-            return 0;
+            return stats.optInt("assists", 0);
         }
 
         public int goals() {
-            try {
-                return stats.getInt("goals");
-            } catch (JSONException e) {
-                // Probably a goalie
-            }
-
-            return 0;
-        }
-
-        public int games() {
-            try {
-                return stats.getInt("games");
-            } catch (JSONException e) {
-                // Probably a goalie
-            }
-
-            return 0;
+            return stats.optInt("goals", 0);
         }
 
         public int plusMinus() {
-            try {
-                return stats.getInt("plusMinus");
-            } catch (JSONException e) {
-                // Probably a goalie
-            }
+            return stats.optInt("plusMinus", 0);
+        }
 
-            return 0;
+        public Double goalAgainstAverage() {
+            return stats.optDouble("goalAgainstAverage", 0.0);
+        }
+
+        public String timeOnIce() {
+            return stats.optString("timeOnIce", "0:00");
+        }
+
+        public Integer pim() {
+            return stats.optInt("pim", 0);
+        }
+
+        public Integer shots() {
+            return stats.optInt("shots", 0);
+        }
+        public Integer games() {
+            return stats.optInt("games", 0);
+        }
+
+
+        public Integer hits() {
+            return stats.optInt("hits", 0);
+        }
+
+        public Integer powerPlayGoals() {
+            return stats.optInt("powerPlayGoals", 0);
+        }
+
+        public Integer powerPlayPoints() {
+            return stats.optInt("powerPlayPoints", 0);
+        }
+
+        public String powerPlayTimeOnIce() {
+            return stats.optString("powerPlayPoints", "0:00");
+        }
+
+        public int timeOnIceInSeconds() {
+            int midPoint = timeOnIce().indexOf(':');
+            int minutes = Integer.parseInt(timeOnIce().substring(0, midPoint));
+            int seconds = Integer.parseInt(timeOnIce().substring(midPoint + 1));
+
+            return minutes * 60 + seconds;
         }
     }
 }

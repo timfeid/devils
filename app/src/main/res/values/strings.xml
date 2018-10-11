@@ -56,4 +56,15 @@
     <string name="diff">DIFF</string>
     <string name="strk">STRK</string>
     <string name="dash">-</string>
+    <string name="sort_by">Sort By</string>
+    <string-array name="skaters_sort">
+        <item>Points</item>
+        <item>Goals</item>
+        <item>Assists</item>
+        <item>Time On Ice</item>
+    </string-array>
+    <string-array name="goalies_sort">
+        <item>Save %</item>
+        <item>Games Started</item>
+    </string-array>
 </resources>

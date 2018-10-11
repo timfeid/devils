@@ -7,18 +7,20 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp">
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginVertical="1dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="8dp">
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentTop="true"
+                android:layout_marginEnd="8dp"
                 android:scaleType="centerCrop"
                 android:contentDescription="@string/media_image" />
 
@@ -28,9 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:paddingTop="8dp"
-                android:paddingHorizontal="16dp"
-                android:layout_below="@+id/image"
+                android:layout_toEndOf="@+id/image"
                 android:textSize="18sp" />
 
             <com.timfeid.devils.BoldFontTextView
@@ -39,8 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-8dp"
                 android:layout_below="@+id/player_number"
+                android:layout_toEndOf="@+id/image"
                 android:includeFontPadding="false"
-                android:paddingHorizontal="16dp"
                 android:textColor="#222"
                 android:textStyle="bold"
                 android:textSize="24sp" />
@@ -49,11 +49,8 @@
                 android:id="@+id/stat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/image"
-                android:paddingHorizontal="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="32sp"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"/>
 
         </RelativeLayout>

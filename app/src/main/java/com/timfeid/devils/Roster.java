@@ -30,6 +30,36 @@ class Roster {
         return roster;
     }
 
+    List<Person> getGoalies () {
+        List<Person> goalies = new ArrayList<>();
+        for (Person person : roster) {
+            try {
+                if (person.isGoalie()) {
+                    goalies.add(person);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return goalies;
+    }
+
+    public List<Person> getSkaters() {
+        List<Person> skaters = new ArrayList<>();
+        for (Person person : roster) {
+            try {
+                if (!person.isGoalie()) {
+                    skaters.add(person);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return skaters;
+    }
+
     public Roster sortByGoals() {
         try {
             Roster roster = (Roster) this.clone();
@@ -60,6 +90,7 @@ class Roster {
         return roster.get(position);
     }
 
+
     static class PointComparator implements Comparator<Person> {
 
         @Override
@@ -89,6 +120,26 @@ class Roster {
         }
     }
 
+    static class GoalsAgainstComparator implements Comparator<Person> {
+
+        @Override
+        public int compare(Person a, Person b) {
+//            if (a.getCurrentStats() == null) {
+//                return -1;
+//            }
+//            if (b.getCurrentStats() == null) {
+//                return 1;
+//            }
+//            if (a.getCurrentStats().games() == 0) {
+//                return -1;
+//            }
+//            if (b.getCurrentStats().games() == 0) {
+//                return 1;
+//            }
+            return Double.compare(a.getCurrentStats().goalAgainstAverage(), b.getCurrentStats().goalAgainstAverage());
+        }
+    }
+
     static class AssistsComparator implements Comparator<Person> {
 
         @Override
@@ -100,6 +151,22 @@ class Roster {
                 return -1;
             }
             return Integer.compare(b.getCurrentStats().assists(), a.getCurrentStats().assists());
+        }
+    }
+
+    public static class TimeOnIceComparator implements Comparator<Person> {
+        @Override
+        public int compare(Person a, Person b) {
+            if (a.getCurrentStats() == null) {
+                return 1;
+            }
+            if (b.getCurrentStats() == null) {
+                return -1;
+            }
+            int bInt = b.getCurrentStats().timeOnIceInSeconds();
+            int aInt = a.getCurrentStats().timeOnIceInSeconds();
+
+            return Integer.compare(bInt, aInt);
         }
     }
 }
