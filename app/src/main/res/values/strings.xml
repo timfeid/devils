@@ -61,10 +61,12 @@
         <item>Points</item>
         <item>Goals</item>
         <item>Assists</item>
+        <item>Penalty Minutes</item>
         <item>Time On Ice</item>
     </string-array>
     <string-array name="goalies_sort">
-        <item>Save %</item>
+        <item>Save Percentage</item>
         <item>Games Started</item>
+        <item>Goals Against Average</item>
     </string-array>
 </resources>

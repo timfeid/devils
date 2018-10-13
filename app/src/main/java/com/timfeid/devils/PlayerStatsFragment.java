@@ -98,7 +98,7 @@ public class PlayerStatsFragment extends Fragment implements AdapterView.OnItemS
 
                     @Override
                     public Comparator<Person> getComparator() {
-                        return new Roster.GoalsAgainstComparator();
+                        return new Roster.GoalsComparator();
                     }
                 });
                 break;
@@ -117,11 +117,25 @@ public class PlayerStatsFragment extends Fragment implements AdapterView.OnItemS
                 });
                 break;
 
+            case "Penalty Minutes":
+                reset(new StatsPlayerGetter() {
+                    @Override
+                    public String getStat(Person person) {
+                        return person.getCurrentStats().penaltyMinutes();
+                    }
+
+                    @Override
+                    public Comparator<Person> getComparator() {
+                        return new Roster.PenaltyMinutesComparator();
+                    }
+                });
+                break;
+
             case "Time On Ice":
                 reset(new StatsPlayerGetter() {
                     @Override
                     public String getStat(Person person) {
-                        return String.format(Locale.getDefault(), "%s", person.getCurrentStats().timeOnIce());
+                        return String.format(Locale.getDefault(), "%s", person.getCurrentStats().timeOnIcePerGame());
                     }
 
                     @Override
@@ -131,16 +145,30 @@ public class PlayerStatsFragment extends Fragment implements AdapterView.OnItemS
                 });
                 break;
 
-            case "Save %":
+            case "Goals Against Average":
                 reset(new StatsGoalieGetter() {
                     @Override
                     public String getStat(Person person) {
-                        return String.format(Locale.getDefault(), "%.2f%%", person.getCurrentStats().goalAgainstAverage());
+                        return String.format(Locale.getDefault(), "%.2f", person.getCurrentStats().goalAgainstAverage());
                     }
 
                     @Override
                     public Comparator<Person> getComparator() {
-                        return new Roster.GoalsComparator();
+                        return new Roster.GoalsAgainstComparator();
+                    }
+                });
+                break;
+
+            case "Save Percentage":
+                reset(new StatsGoalieGetter() {
+                    @Override
+                    public String getStat(Person person) {
+                        return String.format(Locale.getDefault(), "%.4f", person.getCurrentStats().savePercentage());
+                    }
+
+                    @Override
+                    public Comparator<Person> getComparator() {
+                        return new Roster.SavePercentageComparator();
                     }
                 });
                 break;
@@ -149,12 +177,12 @@ public class PlayerStatsFragment extends Fragment implements AdapterView.OnItemS
                 reset(new StatsGoalieGetter() {
                     @Override
                     public String getStat(Person person) {
-                        return String.format(Locale.getDefault(), "%d", person.getCurrentStats().games());
+                        return String.format(Locale.getDefault(), "%d", person.getCurrentStats().gamesStarted());
                     }
 
                     @Override
                     public Comparator<Person> getComparator() {
-                        return new Roster.GoalsComparator();
+                        return new Roster.GamesStartedComparator();
                     }
                 });
                 break;

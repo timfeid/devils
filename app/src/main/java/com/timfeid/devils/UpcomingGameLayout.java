@@ -12,6 +12,8 @@ import org.json.JSONException;
 
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -37,10 +39,14 @@ class UpcomingGameLayout extends GameLayout {
 
     private void populateTopScorers(String team) throws JSONException {
         Roster roster = game.getRosterForTeam(team);
+        List<Person> skaters = roster.getSkaters();
+        Collections.sort(skaters, new Roster.GoalsComparator());
+        Collections.sort(skaters, new Roster.PointComparator());
+
         LinearLayout topScorersLayout = rootView.findViewById(getResources().getIdentifier("top_"+team+"_scorers_layout",
                 "id", getActivity().getPackageName()));
         for (int i = 0; i < 3; i++) {
-            Person person = roster.getPerson(i);
+            Person person = skaters.get(i);
             LinearLayout layout = (LinearLayout) getLayoutInflater().inflate(R.layout.top_scorer_box, topScorersLayout, false);
 
             ImageView photo = layout.findViewById(R.id.top_scorer_photo);

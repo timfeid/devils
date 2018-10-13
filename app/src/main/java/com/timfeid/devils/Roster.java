@@ -124,19 +124,49 @@ class Roster {
 
         @Override
         public int compare(Person a, Person b) {
-//            if (a.getCurrentStats() == null) {
-//                return -1;
-//            }
-//            if (b.getCurrentStats() == null) {
-//                return 1;
-//            }
-//            if (a.getCurrentStats().games() == 0) {
-//                return -1;
-//            }
-//            if (b.getCurrentStats().games() == 0) {
-//                return 1;
-//            }
+            if (a.getCurrentStats() == null) {
+                return 1;
+            }
+            if (b.getCurrentStats() == null) {
+                return -1;
+            }
+            if (a.getCurrentStats().games() == 0) {
+                return 1;
+            }
+            if (b.getCurrentStats().games() == 0) {
+                return -1;
+            }
             return Double.compare(a.getCurrentStats().goalAgainstAverage(), b.getCurrentStats().goalAgainstAverage());
+        }
+    }
+
+
+    static class GamesStartedComparator implements Comparator<Person> {
+
+        @Override
+        public int compare(Person a, Person b) {
+            if (a.getCurrentStats() == null) {
+                return 1;
+            }
+            if (b.getCurrentStats() == null) {
+                return -1;
+            }
+            return Double.compare(b.getCurrentStats().gamesStarted(), a.getCurrentStats().gamesStarted());
+        }
+    }
+
+
+    static class SavePercentageComparator implements Comparator<Person> {
+
+        @Override
+        public int compare(Person a, Person b) {
+            if (a.getCurrentStats() == null) {
+                return 1;
+            }
+            if (b.getCurrentStats() == null) {
+                return -1;
+            }
+            return Double.compare(b.getCurrentStats().savePercentage(), a.getCurrentStats().savePercentage());
         }
     }
 
@@ -163,8 +193,24 @@ class Roster {
             if (b.getCurrentStats() == null) {
                 return -1;
             }
-            int bInt = b.getCurrentStats().timeOnIceInSeconds();
-            int aInt = a.getCurrentStats().timeOnIceInSeconds();
+            int bInt = b.getCurrentStats().timeOnIcePerGameInSeconds();
+            int aInt = a.getCurrentStats().timeOnIcePerGameInSeconds();
+
+            return Integer.compare(bInt, aInt);
+        }
+    }
+
+    public static class PenaltyMinutesComparator implements Comparator<Person> {
+        @Override
+        public int compare(Person a, Person b) {
+            if (a.getCurrentStats() == null) {
+                return 1;
+            }
+            if (b.getCurrentStats() == null) {
+                return -1;
+            }
+            int bInt = Integer.parseInt(b.getCurrentStats().penaltyMinutes());
+            int aInt = Integer.parseInt(a.getCurrentStats().penaltyMinutes());
 
             return Integer.compare(bInt, aInt);
         }

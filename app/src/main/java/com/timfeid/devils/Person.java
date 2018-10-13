@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Tim on 2/10/2018.
@@ -84,13 +85,10 @@ class Person implements Parcelable {
                         for (int j = 0; j < splits.length(); j++) {
                             JSONObject split = splits.getJSONObject(j);
 
-                            if (split.has("league")) {
-                                if (split.getJSONObject("league").getString("name").equals(Stats.LEAGUE_NAME)) {
-                                    if (split.getString("season").equals(Config.getValue("season"))) {
-                                        currentStats = new Stats(split.getJSONObject("stat"));
-                                        return;
-                                    }
-
+                            if ((!split.has("league") || split.getJSONObject("league").getString("name").equals(Stats.LEAGUE_NAME))) {
+                                if (split.getString("season").equals(Config.getValue("season"))) {
+                                    currentStats = new Stats(split.getJSONObject("stat"));
+                                    return;
                                 }
                             }
 
@@ -172,8 +170,8 @@ class Person implements Parcelable {
         return "https://nhl.bamcontent.com/images/actionshots/"+getId()+".jpg";
     }
 
-    public String getFullName() throws JSONException {
-        return person.getString("firstName") + " " + person.getString("lastName");
+    public String getFullName() {
+        return person.optString("firstName") + " " + person.optString("lastName");
     }
 
     public String getPositionAbbreviation() throws JSONException {
@@ -284,8 +282,25 @@ class Person implements Parcelable {
             return stats.optDouble("goalAgainstAverage", 0.0);
         }
 
+        public Double savePercentage() {
+            return stats.optDouble("savePercentage", 0.0);
+        }
+
         public String timeOnIce() {
             return stats.optString("timeOnIce", "0:00");
+        }
+        public String timeOnIcePerGame() {
+            try {
+                return stats.getString("timeOnIcePerGame");
+            } catch (JSONException e) {
+                return getAverageTimeOnIce();
+            }
+        }
+        
+        private String getAverageTimeOnIce() {
+            int seconds = games() == 0 ? 0 : timeOnIceInSeconds() / games();
+            
+            return String.format(Locale.getDefault(), "%d:%02d", ((int) Math.floor(seconds / 60)), seconds % 60);
         }
 
         public Integer pim() {
@@ -315,6 +330,9 @@ class Person implements Parcelable {
         public String powerPlayTimeOnIce() {
             return stats.optString("powerPlayPoints", "0:00");
         }
+        public String penaltyMinutes() {
+            return stats.optString("penaltyMinutes", "0");
+        }
 
         public int timeOnIceInSeconds() {
             int midPoint = timeOnIce().indexOf(':');
@@ -322,6 +340,20 @@ class Person implements Parcelable {
             int seconds = Integer.parseInt(timeOnIce().substring(midPoint + 1));
 
             return minutes * 60 + seconds;
+        }
+
+        public int timeOnIcePerGameInSeconds() {
+            int midPoint = timeOnIcePerGame().indexOf(':');
+            int minutes = Integer.parseInt(timeOnIcePerGame().substring(0, midPoint));
+            int seconds = Integer.parseInt(timeOnIcePerGame().substring(midPoint + 1));
+
+            Helpers.d(timeOnIcePerGame());
+
+            return minutes * 60 + seconds;
+        }
+
+        public Integer gamesStarted() {
+            return stats.optInt("gamesStarted", 0);
         }
     }
 }
