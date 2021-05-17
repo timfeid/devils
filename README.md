@@ -1,3 +1,9 @@
+# Moved
+
+This repo is no longer maintained and has moved to
+https://github.com/timfeid/kotlin-devils
+
+
 # Unofficial Devils Android App
 ![hello](https://raw.githubusercontent.com/timfeid/devils/master/photos/Screenshot_20181011-192944.jpg)
 ![goodbye](https://raw.githubusercontent.com/timfeid/devils/master/photos/Screenshot_20181011-213956.jpg)
